@@ -40,6 +40,21 @@ const priceCalculator = {
 
 		return priceAfterDiscount;
 	},
+
+	async checkBadge(totalBenefitAmount) {
+		let badge = "없음";
+
+		if (totalBenefitAmount >= 20000) badge = "산타";
+
+		if (totalBenefitAmount >= 10000 && totalBenefitAmount < 20000)
+			badge = "트리";
+
+		if (totalBenefitAmount >= 5000 && totalBenefitAmount < 10000) badge = "별";
+
+		Console.print(badge);
+
+		return badge;
+	},
 };
 
 export default priceCalculator;

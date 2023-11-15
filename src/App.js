@@ -78,6 +78,9 @@ class App {
 			totalBenefitAmount,
 			presentDiscount
 		);
+
+		OutputView.printBadge();
+		await priceCalculator.checkBadge(totalBenefitAmount);
 	}
 }
 

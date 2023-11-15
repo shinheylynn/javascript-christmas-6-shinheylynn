@@ -46,6 +46,10 @@ const OutputView = {
 	printPriceAfterDiscount() {
 		Console.print(OUTPUT_TITLE.PRINT_PRICE_AFTER_DISCOUNT);
 	},
+
+	printBadge() {
+		Console.print(OUTPUT_TITLE.PRINT_BADGE);
+	},
 };
 
 export default OutputView;

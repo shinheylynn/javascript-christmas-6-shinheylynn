@@ -34,6 +34,8 @@ const UserController = {
 				menuAndQuantity
 			);
 
+			console.log("user", menuAndQuantity);
+
 			if (!isValidMenu) {
 				throw new Error(ERROR_MESSAGES.PRINT_INVALID_MENU);
 			}

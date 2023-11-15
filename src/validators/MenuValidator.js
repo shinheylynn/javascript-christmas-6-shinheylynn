@@ -42,19 +42,21 @@ class MenuValidator {
 		return isValid;
 	}
 
-	// static isOnlyBeverage(menuAndQuantity) {
-	// 	const categories = menuAndQuantity.map(([itemName]) => {
-	// 		for (const category in this.menu) {
-	// 			if (this.menu[category][itemName] !== undefined) {
-	// 				return category;
-	// 			}
-	// 		}
-	// 	});
+	static isNotOnlyBeverage(menuAndQuantity) {
+		const categories = menuAndQuantity.map(([itemName]) => {
+			for (const category in this.menu) {
+				if (this.menu[category][itemName] !== undefined) {
+					return category;
+				}
+			}
+		});
 
-	// 	const uniqueCategories = [...new Set(categories)];
+		const uniqueCategories = [...new Set(categories)];
 
-	// 	return uniqueCategories.length === 1 && uniqueCategories[0] === "beverage";
-	// }
+		return !(
+			uniqueCategories.length === 1 && uniqueCategories[0] === "beverage"
+		);
+	}
 
 	static isValidMenu(input, menu, menuAndQuantity) {
 		return (
@@ -62,8 +64,8 @@ class MenuValidator {
 			this.isNotEmpty(input) &&
 			this.isQuantityValid(menuAndQuantity) &&
 			this.isInputInMenu(menu, menuAndQuantity) &&
-			this.isDuplicated(menuAndQuantity)
-			// && this.isOnlyBeverage(menuAndQuantity)
+			this.isDuplicated(menuAndQuantity) &&
+			this.isNotOnlyBeverage(menuAndQuantity)
 		);
 	}
 }

@@ -17,6 +17,11 @@ const OutputView = {
 
 		return inputMenu;
 	},
+
+	async printMenu(inputMenu) {
+		const inputMenuString = MenuController.parseMenuString(inputMenu);
+		Console.print(`${OUTPUT_TITLE.PRINT_MENU}\n${inputMenuString}`);
+	},
 };
 
 export default OutputView;

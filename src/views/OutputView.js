@@ -34,6 +34,10 @@ const OutputView = {
 
 		return present;
 	},
+
+	printBenefit() {
+		Console.print(OUTPUT_TITLE.PRINT_BENEFIT);
+	},
 };
 
 export default OutputView;

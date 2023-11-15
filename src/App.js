@@ -4,12 +4,19 @@ import NoBenefitView from "./views/NoBenefitView";
 import OutputView from "./views/OutputView";
 import UserController from "./controllers/UserController";
 import MenuController from "./controllers/MenuController";
+import ChristmasDiscount from "./benefits/ChristmasDiscount";
+import presentBenefit from "./benefits/presentBenefit";
+import SpecialDiscount from "./benefits/SpecialDiscount";
+import WeekDiscount from "./benefits/WeekDiscount";
 import MENU from "./constants/Menu";
 
 class App {
 	constructor() {
 		this.menu = MENU;
 		this.menuController = new MenuController();
+		this.christmasDiscount = new ChristmasDiscount();
+		this.weekDiscount = new WeekDiscount();
+		this.specialDiscount = new SpecialDiscount();
 	}
 
 	async titles() {
@@ -46,6 +53,15 @@ class App {
 		);
 
 		const present = OutputView.printPresent(totalPrice);
+
+		OutputView.printBenefit();
+		const christmasDiscount = await this.christmasDiscount.formatDiscount(date);
+		const weekDiscount = await this.weekDiscount.formatDiscount(
+			date,
+			parsedInputMenu
+		);
+		const specialDiscount = await this.specialDiscount.formatDiscount(date);
+		const presentDiscount = await presentBenefit.checkPresent(present);
 	}
 }
 

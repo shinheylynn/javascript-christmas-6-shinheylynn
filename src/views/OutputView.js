@@ -22,6 +22,10 @@ const OutputView = {
 		const inputMenuString = MenuController.parseMenuString(inputMenu);
 		Console.print(`${OUTPUT_TITLE.PRINT_MENU}\n${inputMenuString}`);
 	},
+
+	printPriceBeforeDiscount() {
+		Console.print(OUTPUT_TITLE.PRINT_PRICE_BEFORE_DISCOUNT);
+	},
 };
 
 export default OutputView;

@@ -39,6 +39,11 @@ class App {
 		);
 
 		OutputView.printMenu(inputMenu);
+
+		OutputView.printPriceBeforeDiscount();
+		const totalPrice = await this.menuController.calculateTotalPrice(
+			parsedInputMenu
+		);
 	}
 }
 

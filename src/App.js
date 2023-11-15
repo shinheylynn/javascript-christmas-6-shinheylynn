@@ -15,7 +15,9 @@ class App {
 		await UserController.inputDate(); // 예외 테스트 - 날짜 예외 테스트
 	}
 
-	async invalidMenu() {}
+	async invalidMenu() {
+		await UserController.inputMenu(); // 예외 테스트 - 주문 예외 테스트
+	}
 
 	async run() {}
 }

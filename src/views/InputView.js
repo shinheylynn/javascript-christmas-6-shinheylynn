@@ -5,6 +5,10 @@ const InputView = {
 	async getDate() {
 		return await Console.readLineAsync(INPUT_MESSAGES.GET_DATE);
 	},
+
+	async getMenu() {
+		return await Console.readLineAsync(INPUT_MESSAGES.GET_MENU);
+	},
 };
 
 export default InputView;

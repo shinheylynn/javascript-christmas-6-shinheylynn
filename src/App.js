@@ -44,6 +44,8 @@ class App {
 		const totalPrice = await this.menuController.calculateTotalPrice(
 			parsedInputMenu
 		);
+
+		const present = OutputView.printPresent(totalPrice);
 	}
 }
 

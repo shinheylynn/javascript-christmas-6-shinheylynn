@@ -26,6 +26,14 @@ const OutputView = {
 	printPriceBeforeDiscount() {
 		Console.print(OUTPUT_TITLE.PRINT_PRICE_BEFORE_DISCOUNT);
 	},
+
+	printPresent(totalPrice) {
+		let present = "";
+		totalPrice >= 120000 ? (present = "샴페인 1개") : (present = "없음");
+		Console.print(`${OUTPUT_TITLE.PRINT_PRESENT}\n${present}`);
+
+		return present;
+	},
 };
 
 export default OutputView;

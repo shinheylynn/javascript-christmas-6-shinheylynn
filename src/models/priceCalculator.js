@@ -24,6 +24,22 @@ const priceCalculator = {
 
 		return totalBenefitAmount;
 	},
+
+	async calculateTotalAfterDiscount(
+		totalPrice,
+		totalBenefitAmount,
+		presentDiscount
+	) {
+		const priceAfterDiscount =
+			totalPrice - totalBenefitAmount + presentDiscount;
+		const formattedPriceAfterDiscount = priceAfterDiscount
+			.toString()
+			.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+		Console.print(formattedPriceAfterDiscount + "원");
+
+		return priceAfterDiscount;
+	},
 };
 
 export default priceCalculator;

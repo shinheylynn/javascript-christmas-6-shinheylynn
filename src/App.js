@@ -71,6 +71,13 @@ class App {
 			specialDiscount,
 			presentDiscount
 		);
+
+		OutputView.printPriceAfterDiscount();
+		await priceCalculator.calculateTotalAfterDiscount(
+			totalPrice,
+			totalBenefitAmount,
+			presentDiscount
+		);
 	}
 }
 

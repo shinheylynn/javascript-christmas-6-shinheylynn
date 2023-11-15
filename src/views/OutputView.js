@@ -42,6 +42,10 @@ const OutputView = {
 	printTotalBenefit() {
 		Console.print(OUTPUT_TITLE.PRINT_TOTAL_BENEFIT);
 	},
+
+	printPriceAfterDiscount() {
+		Console.print(OUTPUT_TITLE.PRINT_PRICE_AFTER_DISCOUNT);
+	},
 };
 
 export default OutputView;

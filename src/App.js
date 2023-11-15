@@ -20,23 +20,10 @@ class App {
 		this.specialDiscount = new SpecialDiscount();
 	}
 
-	async titles() {
-		TitleView.printTitles(); // 기능 테스트 - 모든 타이틀 출력
-	}
-
-	async noBenefit() {
-		NoBenefitView.printNoBenefit(); // 기능 테스트 - 혜택 내역 타이틀과 없음 출력
-	}
-
-	async invalidDate() {
-		await UserController.inputDate(); // 예외 테스트 - 날짜 예외 테스트
-	}
-
-	async invalidMenu() {
-		await UserController.inputMenu(); // 예외 테스트 - 주문 예외 테스트
-	}
-
 	async run() {
+		await TitleView.printTitles(); // 기능 테스트 - 모든 타이틀 출력
+		await NoBenefitView.printNoBenefit(); // 기능 테스트 - 혜택 내역 타이틀과 없음 출력
+
 		const date = await OutputView.printGetDate();
 		const inputMenu = await OutputView.printGetMenu();
 		const parsedInputMenu = await this.menuController.parseMenuAndQuantity(
@@ -81,6 +68,9 @@ class App {
 
 		OutputView.printBadge();
 		await priceCalculator.checkBadge(totalBenefitAmount);
+
+		await UserController.inputDate(); // 예외 테스트 - 날짜 예외 테스트
+		await UserController.inputMenu(); // 예외 테스트 - 주문 예외 테스트
 	}
 }
 

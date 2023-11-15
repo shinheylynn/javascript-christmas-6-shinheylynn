@@ -24,23 +24,25 @@ class WeekDiscount {
 	}
 
 	async calculateWeekDiscount(date, parsedInputMenu) {
-		const day = await this.getDayFromWeek(date);
-		let weekDiscount = 0;
-		let weekendDiscount = 0;
+		if (parsedInputMenu) {
+			const day = await this.getDayFromWeek(date);
+			let weekDiscount = 0;
+			let weekendDiscount = 0;
 
-		await Promise.all(
-			parsedInputMenu.map(async ([menuItem, quantity]) => {
-				const category = await this.getCategory(menuItem);
+			await Promise.all(
+				parsedInputMenu.map(async ([menuItem, quantity]) => {
+					const category = await this.getCategory(menuItem);
 
-				if (day !== "금" && day !== "토" && category === "dessert") {
-					weekDiscount += quantity * 2023;
-				} else if ((day === "금" || day === "토") && category === "main") {
-					weekendDiscount += quantity * 2023;
-				}
-			})
-		);
+					if (day !== "금" && day !== "토" && category === "dessert") {
+						weekDiscount += quantity * 2023;
+					} else if ((day === "금" || day === "토") && category === "main") {
+						weekendDiscount += quantity * 2023;
+					}
+				})
+			);
 
-		return { weekDiscount, weekendDiscount };
+			return { weekDiscount, weekendDiscount };
+		}
 	}
 
 	async formatDiscount(date, parsedInputMenu) {
@@ -48,19 +50,22 @@ class WeekDiscount {
 			date,
 			parsedInputMenu
 		);
-		const weekDiscount = calculatedWeekDiscount.weekDiscount
-			.toString()
-			.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		const weekendDiscount = calculatedWeekDiscount.weekendDiscount
-			.toString()
-			.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-		if (weekDiscount.trim() !== "0")
-			Console.print("평일 할인: -" + weekDiscount + "원");
-		if (weekendDiscount.trim() !== "0")
-			Console.print("특별 할인: -" + weekendDiscount + "원");
+		if (calculatedWeekDiscount) {
+			const weekDiscount = calculatedWeekDiscount.weekDiscount
+				.toString()
+				.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			const weekendDiscount = calculatedWeekDiscount.weekendDiscount
+				.toString()
+				.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-		return calculatedWeekDiscount;
+			if (weekDiscount.trim() !== "0")
+				Console.print("평일 할인: -" + weekDiscount + "원");
+			if (weekendDiscount.trim() !== "0")
+				Console.print("특별 할인: -" + weekendDiscount + "원");
+
+			return calculatedWeekDiscount;
+		}
 	}
 }
 

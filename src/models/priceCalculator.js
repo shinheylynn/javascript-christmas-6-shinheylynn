@@ -7,22 +7,26 @@ const priceCalculator = {
 		specialDiscount,
 		presentDiscount
 	) {
-		const weekdayDiscount = weekDiscount.weekDiscount;
-		const weekendDiscount = weekDiscount.weekendDiscount;
+		if (weekDiscount) {
+			const weekdayDiscount = weekDiscount.weekDiscount;
+			const weekendDiscount = weekDiscount.weekendDiscount;
 
-		const totalBenefitAmount =
-			christmasDiscount +
-			weekdayDiscount +
-			weekendDiscount +
-			specialDiscount +
-			presentDiscount;
-		const formattedTotalBenefitAmount = totalBenefitAmount
-			.toString()
-			.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			const totalBenefitAmount =
+				christmasDiscount +
+				weekdayDiscount +
+				weekendDiscount +
+				specialDiscount +
+				presentDiscount;
+			const formattedTotalBenefitAmount = totalBenefitAmount
+				.toString()
+				.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-		Console.print("-" + formattedTotalBenefitAmount + "원");
+			totalBenefitAmount !== 0
+				? Console.print("-" + formattedTotalBenefitAmount + "원")
+				: Console.print("없음");
 
-		return totalBenefitAmount;
+			return totalBenefitAmount;
+		}
 	},
 
 	async calculateTotalAfterDiscount(

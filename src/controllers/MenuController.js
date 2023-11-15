@@ -25,38 +25,41 @@ class MenuController {
 	}
 
 	static parseMenuString(input) {
-		const menuList = input.split(",");
-		const result = [];
+		if (input) {
+			const menuList = input.split(",");
+			const result = [];
 
-		if (input)
 			menuList.forEach((menuItem) => {
 				const [menu, quantity] = menuItem.split("-");
 				result.push(`${menu.trim()} ${quantity.trim()}개`);
 			});
 
-		return result.join("\n");
+			return result.join("\n");
+		}
 	}
 
 	async calculateTotalPrice(inputMenu) {
-		let totalPrice = 0;
+		if (inputMenu) {
+			let totalPrice = 0;
 
-		inputMenu.forEach(([menu, quantity]) => {
-			const category = Object.keys(this.menu).find(
-				(cat) => cat in this.menu && menu in this.menu[cat]
-			);
-			if (category) {
-				const menuPrice = this.menu[category][menu];
-				totalPrice += menuPrice * quantity;
-			}
-		});
+			inputMenu.forEach(([menu, quantity]) => {
+				const category = Object.keys(this.menu).find(
+					(cat) => cat in this.menu && menu in this.menu[cat]
+				);
+				if (category) {
+					const menuPrice = this.menu[category][menu];
+					totalPrice += menuPrice * quantity;
+				}
+			});
 
-		const formattedTotalPrice = totalPrice
-			.toString()
-			.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			const formattedTotalPrice = totalPrice
+				.toString()
+				.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-		Console.print(formattedTotalPrice + "원");
+			Console.print(formattedTotalPrice + "원");
 
-		return totalPrice;
+			return totalPrice;
+		}
 	}
 }
 

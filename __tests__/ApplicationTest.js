@@ -37,7 +37,7 @@ describe("기능 테스트", () => {
 
 		// when
 		const app = new App();
-		await app.titles();
+		await app.run();
 
 		// then
 		const expected = [
@@ -60,7 +60,7 @@ describe("기능 테스트", () => {
 
 		// when
 		const app = new App();
-		await app.noBenefit();
+		await app.run();
 
 		// then
 		const expected = ["<혜택 내역>" + LINE_SEPARATOR + "없음"];
@@ -80,7 +80,7 @@ describe("예외 테스트", () => {
 
 		// when
 		const app = new App();
-		await app.invalidDate();
+		await app.run();
 
 		// then
 		expect(logSpy).toHaveBeenCalledWith(
@@ -98,7 +98,7 @@ describe("예외 테스트", () => {
 
 		// when
 		const app = new App();
-		await app.invalidMenu();
+		await app.run();
 
 		// then
 		expect(logSpy).toHaveBeenCalledWith(

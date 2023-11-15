@@ -8,6 +8,7 @@ import ChristmasDiscount from "./benefits/ChristmasDiscount";
 import presentBenefit from "./benefits/presentBenefit";
 import SpecialDiscount from "./benefits/SpecialDiscount";
 import WeekDiscount from "./benefits/WeekDiscount";
+import priceCalculator from "./models/priceCalculator";
 import MENU from "./constants/Menu";
 
 class App {
@@ -62,6 +63,14 @@ class App {
 		);
 		const specialDiscount = await this.specialDiscount.formatDiscount(date);
 		const presentDiscount = await presentBenefit.checkPresent(present);
+
+		OutputView.printTotalBenefit();
+		const totalBenefitAmount = await priceCalculator.calculateTotalBenefit(
+			christmasDiscount,
+			weekDiscount,
+			specialDiscount,
+			presentDiscount
+		);
 	}
 }
 

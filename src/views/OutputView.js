@@ -38,6 +38,10 @@ const OutputView = {
 	printBenefit() {
 		Console.print(OUTPUT_TITLE.PRINT_BENEFIT);
 	},
+
+	printTotalBenefit() {
+		Console.print(OUTPUT_TITLE.PRINT_TOTAL_BENEFIT);
+	},
 };
 
 export default OutputView;
